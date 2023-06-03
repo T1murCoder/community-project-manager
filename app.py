@@ -12,6 +12,9 @@ def create_app():
     login_manager.login_view = "auth.login"
     login_manager.init_app(app)
     
+    from website.views import views
+    
+    app.register_blueprint(views, url_prefix="")
     
     @login_manager.user_loader
     def load_user(user_id):

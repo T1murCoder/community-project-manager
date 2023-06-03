@@ -8,6 +8,12 @@ from sqlalchemy_serializer import SerializerMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
+user_project = sqlalchemy.Table('user_project',
+    SqlAlchemyBase.metadata,
+    sqlalchemy.Column('user_id', sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id")),
+    sqlalchemy.Column('project_id', sqlalchemy.Integer, sqlalchemy.ForeignKey("projects.id")))
+
+
 class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     __tablename__ = 'users'
 
@@ -20,6 +26,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime, 
                                      default=datetime.datetime.now)
+    projects = orm.relationship("Project", secondary=user_project, backref="members")
     about = sqlalchemy.Column(sqlalchemy.Text(140), nullable=True)
     
 
