@@ -26,7 +26,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime, 
                                      default=datetime.datetime.now)
-    projects = orm.relationship("Project", secondary=user_project, backref="members")
+    projects = orm.relationship("Project", secondary=user_project, backref="members", lazy="subquery")
     about = sqlalchemy.Column(sqlalchemy.Text(140), nullable=True)
     
 

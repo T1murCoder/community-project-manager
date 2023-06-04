@@ -28,9 +28,7 @@
           <div class="collapse navbar-collapse flex-grow-1" id="my_navbar">
             <div class="navbar-nav ms-auto flex-nowrap text-end">
               {% if user.is_authenticated %}
-                {% if user.admin %}
-                  <a class="nav-item nav-link menu-item" href="{{url_for('admin.admin_panel')}}">Admin panel</a>
-                {% endif %}
+                  <a class="nav-item nav-link menu-item" href="">Мои проекты</a>
                 <div class="dropdown">
                   <a class="nav-item nav-link" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><div class="d-flex align-items-center justify-content-end">
                     <div>{{user.name}}</div>
@@ -38,9 +36,9 @@
                     <div>{{user_avatar(user.id, 25)}}</div>
                   </div></a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="{{url_for('views.view_profile')}}"><i class="bi bi-person-circle"></i> Профиль</a></li>
+                    <li><a class="dropdown-item" href=""><i class="bi bi-person-circle"></i> Профиль</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{url_for('views.send_feedback')}}"><i class="bi bi-envelope"></i> Обратная связь</a></li>
+                    <li><a class="dropdown-item" href=""><i class="bi bi-envelope"></i> Обратная связь</a></li>
                     <li><a class="dropdown-item" href="{{url_for('auth.logout')}}"><i class="bi bi-box-arrow-right"></i> Выйти</a></li>
                   </ul>
                 </div>

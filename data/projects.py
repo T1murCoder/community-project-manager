@@ -13,9 +13,12 @@ class Project(SqlAlchemyBase):
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     max_members = sqlalchemy.Column(sqlalchemy.Integer, default=1)
     description = sqlalchemy.Column(sqlalchemy.Text(200), default="", nullable=True)
-    leader = orm.relationship("User")
+    leader = orm.relationship("User", lazy="subquery")
     leader_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id", ondelete="CASCADE"))
     
     def set_leader(self, leader):
         self.leader = leader
         leader.projects.append(self)
+    
+    def add_member(self, member):
+        self.members.append(member)
