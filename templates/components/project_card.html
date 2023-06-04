@@ -1,4 +1,4 @@
-{% macro project_card(project, btns=None) %}
+{% macro project_card(project) %}
 <div class="card">
     <h5 class="card-header">Название: {{project.name}}</h5>
     <div class="card-body">
@@ -6,13 +6,6 @@
       <h6 class="card-title">Описание:</h6>
       <p class="card-text">{{project.description}}</p>
       <h6 class="card-title">Участников: {{project.members|length}}/{{project.max_members}}</h6>
-      {% if btns %}
-      <div class="row">
-        {% for btn in btns %}
-            {{btn}}
-        {% endfor %}
-      </div>
-      {% endif %}
     </div>
   </div>
 {% endmacro %}
