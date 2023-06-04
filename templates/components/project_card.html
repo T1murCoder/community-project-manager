@@ -1,5 +1,4 @@
 {% macro project_card(project, btns=None) %}
-<div class="col-sm-8 mx-auto">
 <div class="card">
     <h5 class="card-header">Название: {{project.name}}</h5>
     <div class="card-body">
@@ -12,9 +11,8 @@
         {% for btn in btns %}
             {{btn}}
         {% endfor %}
-        </div>
+      </div>
       {% endif %}
     </div>
   </div>
-</div>
 {% endmacro %}

@@ -3,8 +3,19 @@
 
 {% block content %}
     {% for prj in projects %}
+    
     <div class="row" style="margin-bottom: 20px;">
-        {{project_card(prj)}}
+        <div class="col-sm-8 mx-auto">
+            {{project_card(prj, btn)}}
+            <div class="col-lg-3" style="margin-left: 10px;">
+            {% if user in prj.members %}
+                <a class="btn btn-success disabled" href="">Вы учавствуете!</a>
+            {% elif prj.leader_id != user.id and prj.members|length != prj.max_members and user.is_authenticated %}
+                <a class="btn btn-success" href="{{url_for('views.join_project', project_id=prj.id)}}">Присоединиться</a>
+            {% endif %}
+            </div>
+        </div>
     </div>
+
     {% endfor %}
 {% endblock %}

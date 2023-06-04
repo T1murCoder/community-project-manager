@@ -2,18 +2,23 @@
 {% from "components/project_card.html" import project_card %}
 
 {% block content %}
-
-    {% if projects %}
+<a class="btn btn-primary" href="{{url_for('views.home')}}">Назад</a>
     {% for prj in projects %}
-    <div class="row" style="margin-bottom: 20px;">
-        {{project_card(prj)}}
-    </div>
-    {% endfor %}
-    {% else %}
-    <div class="row">
-        <h5 class="text-muted" style="text-align: center">Вы не учавствуете ни в одном проекте</h5>
-    </div>
-    {% endif %}
     
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-8 mx-auto">
+            {{project_card(prj, btn)}}
+            <div class="btn-wrapper" style="margin-left: 10px;">
+                <a class="btn btn-primary" href="">Просмотр</a>
+            {% if prj.leader_id != user.id  %}
+                <a class="btn btn-danger" href="">Покинуть</a>
+            {% else %}
+                <a class="btn btn-primary" href=""><i class="bi bi-pencil"></i></a>
+                <a class="btn btn-danger" href=""><i class="bi bi-trash"></i></a>
+            {% endif %}
+            </div>
+        </div>
+    </div>
 
+    {% endfor %}
 {% endblock %}
