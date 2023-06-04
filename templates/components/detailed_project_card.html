@@ -1,0 +1,23 @@
+{% macro detailed_project_card(project, user=None) %}
+<div class="card">
+    <h5 class="card-header">Название: {{project.name}}</h5>
+    <div class="card-body">
+      <h6 class="card-title">Лидер: {{project.leader.name}}</h6>
+      <h6 class="card-title">Описание:</h6>
+      <p class="card-text">{{project.description}}</p>
+      <h6 class="card-title">Участников: {{project.members|length}}/{{project.max_members}}</h6>
+      {% for member in project.members %}
+      <p class="bg-light">
+        Участник: №{{loop.index}}<br>
+        Имя: {{member.name}}<br>
+        Почта: {{member.email}}<br>
+        {% if user %}
+        {% if user.id == project.leader_id and member.id != project.leader_id %}
+            <a class="btn btn-danger btn-sm" href="{{url_for('views.delete_member', project_id=project.id, member_id=member.id)}}"><i class="bi bi-person-x"></i></a>
+        {% endif %}
+        {% endif %}
+      </p>
+      {% endfor %}
+    </div>
+  </div>
+{% endmacro %}

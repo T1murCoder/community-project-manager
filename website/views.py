@@ -146,3 +146,29 @@ def view_project(project_id):
         abort(404)
     
     return render_template("view_project.html", prj=project, user=current_user)
+
+
+@views.route("/delete-member/<int:project_id>/<int:member_id>")
+@login_required
+def delete_member(project_id, member_id):
+    db_sess = db_session.create_session()
+    project = db_sess.query(Project).get(project_id)
+    member = db_sess.query(User).get(member_id)
+    user = db_sess.query(User).get(current_user.id)
+    
+    if not project or not member:
+        abort(404)
+    
+    if member.id == user.id:
+        abort(404)
+    
+    if user.id != project.leader_id:
+        abort(404)
+    
+    if member not in project.members:
+        abort(404)
+    
+    project.members.remove(member)
+    db_sess.commit()
+    
+    return redirect(url_for("views.view_project", project_id=project_id))

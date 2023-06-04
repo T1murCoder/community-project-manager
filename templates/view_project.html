@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% from "components/project_card.html" import project_card %}
+{% from "components/detailed_project_card.html" import detailed_project_card %}
 
 {% block content %}
 <a class="btn btn-primary" href="{{url_for('views.my_projects')}}">Назад</a>
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-sm-8 mx-auto">
-            {{project_card(prj)}}
+            {{detailed_project_card(prj, user)}}
             <div class="btn-wrapper" style="margin-left: 10px; margin-top: 5px;">
             {% if prj.leader_id != user.id %}
                 <a class="btn btn-danger" href="{{url_for('views.leave_project', project_id=prj.id)}}">Покинуть</a>
