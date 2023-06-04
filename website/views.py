@@ -15,7 +15,7 @@ def home():
     db_sess = db_session.create_session()
     projects = db_sess.query(Project).all()
 
-    return render_template("home.html", title='Home', projects=projects, user=current_user)
+    return render_template("home.html", title='Менеджер проектов', projects=projects, user=current_user)
 
 @views.route("/create-project", methods=['GET', 'POST'])
 @login_required
@@ -99,7 +99,7 @@ def my_projects():
     db_sess = db_session.create_session()
     user = db_sess.query(User).get(current_user.id)
     print(user.projects)
-    return render_template("my_projects.html", projects=user.projects, user=current_user)
+    return render_template("my_projects.html", projects=user.projects, title="Мои проекты", user=current_user)
 
 
 @views.route("/edit-project/<int:project_id>", methods=['GET', 'POST'])
@@ -129,7 +129,7 @@ def edit_project(project_id):
     form.max_members.data = project.max_members
     form.description.data = project.description
     
-    return render_template("create_project.html", page_header="Редактирование проекта", form=form, user=current_user)
+    return render_template("create_project.html", page_header="Редактирование проекта", title="Редактирование проекта", form=form, user=current_user)
 
 
 @views.route("/view-project/<int:project_id>")
@@ -145,7 +145,7 @@ def view_project(project_id):
     if user not in project.members:
         abort(404)
     
-    return render_template("view_project.html", prj=project, user=current_user)
+    return render_template("view_project.html", prj=project, title="Просмотр проекта", user=current_user)
 
 
 @views.route("/delete-member/<int:project_id>/<int:member_id>")

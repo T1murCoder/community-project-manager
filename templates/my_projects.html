@@ -13,9 +13,11 @@
                 <a class="btn btn-primary" href="{{url_for('views.view_project', project_id=prj.id)}}">Просмотр</a>
             {% if prj.leader_id != user.id %}
                 <a class="btn btn-danger" href="{{url_for('views.leave_project', project_id=prj.id)}}">Покинуть</a>
+                <a class="btn btn-success disabled">Вы учавствуете!</a>
             {% else %}
                 <a class="btn btn-primary" href="{{url_for('views.edit_project', project_id=prj.id)}}"><i class="bi bi-pencil"></i></a>
                 <a class="btn btn-danger" href="{{url_for('views.delete_project', project_id=prj.id)}}"><i class="bi bi-trash"></i></a>
+                <a class="btn btn-success disabled">Вы лидер!</a>
             {% endif %}
             </div>
         </div>
