@@ -2,9 +2,18 @@
 {% from "components/project_card.html" import project_card %}
 
 {% block content %}
+
+    {% if projects %}
     {% for prj in projects %}
     <div class="row" style="margin-bottom: 20px;">
         {{project_card(prj)}}
     </div>
     {% endfor %}
+    {% else %}
+    <div class="row">
+        <h5 class="text-muted" style="text-align: center">Вы не учавствуете ни в одном проекте</h5>
+    </div>
+    {% endif %}
+    
+
 {% endblock %}
