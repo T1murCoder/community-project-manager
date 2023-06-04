@@ -1,0 +1,12 @@
+{% macro project_card(project) %}
+<div class="card col-lg-8 mx-auto">
+    <h5 class="card-header">Название: {{project.name}}</h5>
+    <div class="card-body">
+      <h6 class="card-title">Лидер: {{project.leader.name}}</h5>
+      <h6 class="card-title">Описание:</h5>
+      <p class="card-text">{{project.description}}</p>
+      <h6 class="card-title">Количество участников:</h5>
+      <p class="card-text">{{project.members|length}}/{{project.max_members}}</p>
+    </div>
+  </div>
+{% endmacro %}

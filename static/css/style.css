@@ -1,0 +1,118 @@
+.navbar {
+    background-color: #CC99FF;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    color: white;
+    display: flex;       
+    margin-bottom: 10px;
+}
+
+#my_navbar .nav-item {
+    color: white;
+}
+
+#my_navbar .dropdown * {
+    z-index: 100000;
+}
+
+#my_navbar .nav-item {
+    margin: 0 5px;
+    padding: 8px 8px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+
+#my_navbar .dropdown-menu {
+    border-color: #b063fc;
+}
+
+.post-card {
+    margin: 15px;
+}
+
+
+#wrapper {
+    margin-right: 0px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#site_logo {
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+@media (pointer: fine) {
+    #my_navbar .nav-item:hover {
+        background-color: #b063fc;
+        color: white;
+    }
+
+    #site_logo:hover {
+        margin-right: auto;
+        margin-left: 0px;
+        margin-top: auto;
+        margin-bottom: auto;
+
+        color: white;
+        background-color: #b063fc;
+    }
+  }
+
+
+.toast-header {
+    background-color: #CC99FF;
+    color: white;
+}
+
+
+
+@media screen and (max-width: 380px) {
+    .btn-wrapper {
+        margin-left: 10px;
+    }
+}
+
+
+@media (min-width: 381px) {
+    .btn-wrapper {
+        margin-left: 50px;
+    }
+}
+
+.btn-wrapper a {
+    margin-right: 10px;
+}
+
+.btn-comment-down {
+    margin-right: 10px;
+}
+
+#admin_cards .card {
+    height: 175px;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.attached-image {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 450px) {
+    .attached-image {
+        margin-bottom: 10px;
+    }
+}

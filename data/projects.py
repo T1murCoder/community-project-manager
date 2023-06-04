@@ -12,7 +12,7 @@ class Project(SqlAlchemyBase):
                            primary_key=True, autoincrement=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     max_members = sqlalchemy.Column(sqlalchemy.Integer, default=1)
-    description = sqlalchemy.Column(sqlalchemy.Text(200), nullable=True)
+    description = sqlalchemy.Column(sqlalchemy.Text(200), default="", nullable=True)
     leader = orm.relationship("User")
     leader_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id", ondelete="CASCADE"))
     

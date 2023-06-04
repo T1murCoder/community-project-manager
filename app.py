@@ -13,8 +13,10 @@ def create_app():
     login_manager.init_app(app)
     
     from website.views import views
+    from website.auth import auth
     
     app.register_blueprint(views, url_prefix="")
+    app.register_blueprint(auth, url_prefix="")
     
     @login_manager.user_loader
     def load_user(user_id):
